@@ -14,7 +14,7 @@
   "keywords": [
     "react",
     "reactjs",
-    "react-components"
+    "react-component"
   ],
   "author": "leozdgao",
   "license": "MIT",
@@ -29,6 +29,7 @@
     "babel-cli": "^6.1.18",
     "babel-eslint": "^4.1.5",
     "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.1.18",
     "eslint": "^1.9.0"
   },
