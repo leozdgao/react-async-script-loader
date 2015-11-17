@@ -17,7 +17,7 @@ npm install --save react-async-script-loader
 ## API
 
 ```javascript
-scriptLoader(...scriptSrc)
+scriptLoader(...scriptSrc)([WrappedComponent])
 ```
 
 `scriptSrc` can be a string of source or an array of source. `scriptSrc` will be loaded sequentially, but array of source will be loaded parallelly. It also cache the loaded script to avoid duplicated loading. More lively description see use case below.
