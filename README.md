@@ -1,5 +1,7 @@
 # react-async-script-loader
 
+[![Build Status](https://travis-ci.org/leozdgao/react-script-loader.svg?branch=master)](https://travis-ci.org/leozdgao/react-script-loader) [![npm version](https://badge.fury.io/js/react-async-script-loader.svg)](https://badge.fury.io/js/react-async-script-loader)
+
 A decorator for script lazy loading on react component.
 
 ## Description
