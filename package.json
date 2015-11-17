@@ -1,6 +1,6 @@
 {
-  "name": "react-script-loader",
-  "version": "0.1.0",
+  "name": "react-async-script-loader",
+  "version": "0.1.1",
   "description": "A decorator for script lazy loading on react component",
   "main": "lib/index.js",
   "scripts": {
@@ -28,6 +28,8 @@
   "devDependencies": {
     "babel-cli": "^6.1.18",
     "babel-eslint": "^4.1.5",
+    "babel-plugin-syntax-class-properties": "^6.1.18",
+    "babel-plugin-transform-class-properties": "^6.1.20",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.1.18",

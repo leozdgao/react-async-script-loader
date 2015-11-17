@@ -1,6 +1,6 @@
 import React, { Component, PropTypes as T } from 'react'
 import hoistStatics from 'hoist-non-react-statics'
-import { isDefined, newScript, series } from '../utils'
+import { isDefined, newScript, series } from './utils'
 
 const loadedScript = []
 let failedScript = []

@@ -1,4 +1,4 @@
-# react-script-loader
+# react-async-script-loader
 
 A decorator for script lazy loading on react component.
 
@@ -9,7 +9,7 @@ Some component may depend on other vendors which you may not want to load them u
 ## Installation
 
 ```bash
-npm install --save react-script-loader
+npm install --save react-async-script-loader
 ```
 
 ## API
