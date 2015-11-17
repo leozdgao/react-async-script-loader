@@ -1,0 +1,38 @@
+{
+  "name": "react-script-loader",
+  "version": "0.1.0",
+  "description": "A decorator for script lazy loading on react component",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leozdgao/react-script-loader.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-components"
+  ],
+  "author": "leozdgao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leozdgao/react-script-loader/issues"
+  },
+  "homepage": "https://github.com/leozdgao/react-script-loader#readme",
+  "peerDependencies": {
+    "react": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.1.18",
+    "babel-eslint": "^4.1.5",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-stage-0": "^6.1.18",
+    "eslint": "^1.9.0"
+  },
+  "dependencies": {
+    "hoist-non-react-statics": "^1.0.3"
+  }
+}
