@@ -38,7 +38,7 @@ You can use it to decorate your component.
 
 ```javascript
 import React, { Component } from 'react'
-import scriptLoader from 'react-script-loader'
+import scriptLoader from 'react-async-script-loader'
 
 class Editor extends Component {
   ...
