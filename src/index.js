@@ -29,11 +29,11 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
   class ScriptLoader extends Component {
     static propTypes = {
       onScriptLoaded: T.func
-    }
+    };
 
     static defaultProps = {
       onScriptLoaded: () => {}
-    }
+    };
 
     constructor (props, context) {
       super(props, context)
