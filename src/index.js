@@ -3,6 +3,7 @@ import hoistStatics from 'hoist-non-react-statics'
 import { isDefined, newScript, series } from './utils'
 
 const loadedScript = []
+const pendingScripts = new Map();
 let failedScript = []
 
 const scriptLoader = (...scripts) => (WrappedComponent) => {
@@ -47,7 +48,19 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
     componentDidMount () {
       // sequence load
       const loadNewScript = (src) => {
-        if (loadedScript.indexOf(src) < 0) return newScript(src)
+        if (loadedScript.indexOf(src) < 0) {
+          return taskComplete => {
+            const callbacks = pendingScripts.get(src) || [];
+            callbacks.push(taskComplete);
+            pendingScripts.set(src, callbacks);
+            if (callbacks.length === 1) {
+              return newScript(src)(err => {
+                pendingScripts.get(src).forEach(cb => cb(err, src));
+                pendingScripts.delete(src);
+              });
+            }
+          };
+        }
       }
       const tasks = scripts.map(src => {
         if (Array.isArray(src)) {
