@@ -1,6 +1,6 @@
 import React, { Component, PropTypes as T } from 'react'
 import hoistStatics from 'hoist-non-react-statics'
-import { isDefined, newScript, series } from './utils'
+import { isDefined, newScript, series, noop } from './utils'
 
 const loadedScript = []
 let failedScript = []
@@ -32,7 +32,7 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
     };
 
     static defaultProps = {
-      onScriptLoaded: () => {}
+      onScriptLoaded: noop
     };
 
     constructor (props, context) {
