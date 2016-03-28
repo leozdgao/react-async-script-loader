@@ -63,7 +63,7 @@ export const series = (...tasks) => (each) => (cb) => {
     const key = nextKey.next()
     let thunk = tasks[key]
     if (Array.isArray(thunk)) thunk = parallel.apply(null, thunk).call(null, each)
-    return [ key, thunk ]
+    return [ +key, thunk ] // convert `key` to number
   }
   let key, thunk
   let next = nextThunk()
