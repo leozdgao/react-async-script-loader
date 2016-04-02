@@ -18,7 +18,6 @@ function renderTestComponent (deps, onScriptLoaded) {
 function checkScriptLoaded (getComponent, done) {
   return _ => {
     const com = getComponent()
-    console.log(com)
 
     expect(com.props.isScriptLoaded).to.be.true
     expect(com.props.isScriptLoadSucceed).to.be.true
@@ -32,6 +31,8 @@ describe('Test this module', _ => {
     function (done) {
       const deps = [ '//cdn.bootcss.com/jquery/2.2.1/jquery.min.js' ]
       const com = renderTestComponent(deps, onScriptLoaded)
+
+      this.timeout(5000)
 
       // check script tags
       deps.forEach(testScript => {
@@ -54,10 +55,12 @@ describe('Test this module', _ => {
 
   it('[react-async-script-loader] No redundant script tag will be appended',
     function (done) {
-      const deps = [ '//cdn.bootcss.com/jquery/2.2.1/jquery.min.js' ]
+      const deps = [ '//cdn.bootcss.com/jquery/2.1.1/jquery.min.js' ]
       const com0 = renderTestComponent(deps, checkScriptLoaded(_ => com0, checkAllDone))
       const com1 = renderTestComponent(deps, checkScriptLoaded(_ => com1, checkAllDone))
       let count = 0
+
+      this.timeout(5000)
 
       // check script tags
       deps.forEach(testScript => {
