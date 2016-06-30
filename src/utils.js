@@ -3,12 +3,22 @@ export const isFunction = val => typeof val === 'function'
 export const noop = _ => { }
 
 export const newScript = (src) => (cb) => {
-  const script = document.createElement('script')
-  script.src = src
-  script.addEventListener('load', () => cb(null, src))
-  script.addEventListener('error', () => cb(true, src))
-  document.body.appendChild(script)
-  return script
+  const scriptElem = document.createElement('script')
+  if (typeof src === 'object') {
+    // copy every property to the element
+    for (var key in src) {
+      if (Object.prototype.hasOwnProperty.call(src, key)) {
+        scriptElem[key] = src[key];
+      }
+    }
+    src = src.src;
+  } else {
+    scriptElem.src = src
+  }
+  scriptElem.addEventListener('load', () => cb(null, src))
+  scriptElem.addEventListener('error', () => cb(true, src))
+  document.body.appendChild(scriptElem)
+  return scriptElem
 }
 
 const keyIterator = (cols) => {

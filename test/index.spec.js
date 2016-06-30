@@ -29,7 +29,7 @@ function checkScriptLoaded (getComponent, done) {
 describe('Test this module', _ => {
   it('[react-async-script-loader] Load external script after component mounted',
     function (done) {
-      const deps = [ '//cdn.bootcss.com/jquery/2.2.1/jquery.min.js' ]
+      const deps = [ 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js' ]
       const com = renderTestComponent(deps, onScriptLoaded)
 
       this.timeout(5000)
