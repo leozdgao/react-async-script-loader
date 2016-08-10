@@ -82,19 +82,28 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
         isScriptLoaded: false,
         isScriptLoadSucceed: false
       }
+
+      this._isMounted = false;
     }
 
     componentDidMount () {
+      this._isMounted = true;
       startLoadingScripts(scripts, err => {
-        this.setState({
-          isScriptLoaded: true,
-          isScriptLoadSucceed: !err
-        }, () => {
-          if (!err) {
-            this.props.onScriptLoaded()
-          }
-        })
+        if(this._isMounted) {
+          this.setState({
+            isScriptLoaded: true,
+            isScriptLoadSucceed: !err
+          }, () => {
+            if (!err) {
+              this.props.onScriptLoaded()
+            }
+          })
+        }
       })
+    }
+
+    componentWillUnmount () {
+      this._isMounted = false;
     }
 
     render () {
