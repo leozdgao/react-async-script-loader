@@ -106,10 +106,15 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
       this._isMounted = false;
     }
 
+    getWrappedInstance () {
+      return this.refs.wrappedInstance;
+    }
+
     render () {
       const props = {
         ...this.props,
-        ...this.state
+        ...this.state,
+        ref: 'wrappedInstance'
       }
 
       return (
