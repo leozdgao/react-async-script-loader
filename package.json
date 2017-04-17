@@ -1,6 +1,6 @@
 {
   "name": "react-async-script-loader",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A decorator for script lazy loading on react component",
   "main": "lib/index.js",
   "scripts": {

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes as T } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import hoistStatics from 'hoist-non-react-statics'
 import { isDefined, newScript, series, noop } from './utils'
 
@@ -68,7 +69,7 @@ const removeFailedScript = () => {
 const scriptLoader = (...scripts) => (WrappedComponent) => {
   class ScriptLoader extends Component {
     static propTypes = {
-      onScriptLoaded: T.func
+      onScriptLoaded: PropTypes.func
     }
 
     static defaultProps = {

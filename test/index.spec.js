@@ -1,4 +1,4 @@
-const ReactTestUtils = require('react-addons-test-utils')
+const ReactTestUtils = require('react-dom/test-utils')
 const React = require('react')
 const AsyncScriptLoader = require('../src').default
 
