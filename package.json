@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/leozdgao/react-script-loader#readme",
   "peerDependencies": {
-    "react": "^15.0.1"
+    "react": "^15.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.1.18",
@@ -46,13 +46,12 @@
     "karma-webpack": "~1.7.0",
     "mocha": "~2.4.5",
     "phantomjs-prebuilt": "~2.1.7",
-    "prop-types": "~15.5.8",
     "react": "^15.0.1",
-    "react-addons-test-utils": "^15.0.1",
     "react-dom": "^15.0.1",
     "webpack": "~1.12.14"
   },
   "dependencies": {
-    "hoist-non-react-statics": "^1.0.3"
+    "hoist-non-react-statics": "^1.0.3",
+    "prop-types": "^15.5.10"
   }
 }
