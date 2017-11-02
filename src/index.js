@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import hoistStatics from 'hoist-non-react-statics'
-import { isDefined, newScript, series, noop } from './utils'
+import { newScript, series, noop } from './utils'
 
 const loadedScript = []
 const pendingScripts = {}
@@ -9,14 +9,15 @@ let failedScript = []
 
 export function startLoadingScripts(scripts, onComplete = noop) {
   // sequence load
-  const loadNewScript = (src) => {
+  const loadNewScript = (script) => {
+    const src = typeof script === 'object' ? script.src : script
     if (loadedScript.indexOf(src) < 0) {
       return taskComplete => {
         const callbacks = pendingScripts[src] || []
         callbacks.push(taskComplete)
         pendingScripts[src] = callbacks
         if (callbacks.length === 1) {
-          return newScript(src)(err => {
+          return newScript(script)(err => {
             pendingScripts[src].forEach(cb => cb(err, src))
             delete pendingScripts[src]
           })

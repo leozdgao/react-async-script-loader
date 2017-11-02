@@ -5,8 +5,24 @@ describe('Test util functions', _ => {
   const taskBundle = [1, 2, 3, 4, 5].map(testTask)
 
   it('[utils/newScript] A thunk task, append new script tag', function (done) {
-    const testScript = '//cdn.bootcss.com/jquery/2.2.1/jquery.min.js'
+    const testScript = 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js'
     const task = newScript(testScript)
+
+    // start task
+    task((err, src) => {
+      const tag = document.querySelector(`script[src='${testScript}']`)
+
+      // assert
+      expect(err).to.not.exist
+      expect(src).to.equal(testScript)
+      expect(tag).to.exist
+
+      done()
+    })
+  })
+  it('[utils/newScript] A thunk task, append new script tag with id', function (done) {
+    const testScript = 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js'
+    const task = newScript({src: testScript, id: 'test'})
 
     // start task
     task((err, src) => {
