@@ -1,6 +1,7 @@
 # react-async-script-loader
 
 [![Build Status](https://travis-ci.org/leozdgao/react-async-script-loader.svg?branch=master)](https://travis-ci.org/leozdgao/react-async-script-loader) [![npm version](https://badge.fury.io/js/react-async-script-loader.svg)](https://badge.fury.io/js/react-async-script-loader)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fleozdgao%2Freact-async-script-loader.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fleozdgao%2Freact-async-script-loader?ref=badge_shield)
 
 A decorator for script lazy loading on react component.
 
@@ -95,3 +96,6 @@ class Editor extends Component {
 ## license
 
 MIT
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fleozdgao%2Freact-async-script-loader.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fleozdgao%2Freact-async-script-loader?ref=badge_large)
