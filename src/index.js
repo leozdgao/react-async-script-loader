@@ -9,7 +9,7 @@ let failedScript = []
 
 export function startLoadingScripts(scripts, onComplete = noop) {
   // sequence load
-  const loadNewScript = (script) => {
+  const loadNewScript = script => {
     const src = typeof script === 'object' ? script.src : script
     if (loadedScript.indexOf(src) < 0) {
       return taskComplete => {
@@ -28,19 +28,16 @@ export function startLoadingScripts(scripts, onComplete = noop) {
   const tasks = scripts.map(src => {
     if (Array.isArray(src)) {
       return src.map(loadNewScript)
-    }
-    else return loadNewScript(src)
+    } else return loadNewScript(src)
   })
 
   series(...tasks)((err, src) => {
     if (err) {
       failedScript.push(src)
-    }
-    else {
+    } else {
       if (Array.isArray(src)) {
         src.forEach(addCache)
-      }
-      else addCache(src)
+      } else addCache(src)
     }
   })(err => {
     removeFailedScript()
@@ -48,7 +45,7 @@ export function startLoadingScripts(scripts, onComplete = noop) {
   })
 }
 
-const addCache = (entry) => {
+const addCache = entry => {
   if (loadedScript.indexOf(entry) < 0) {
     loadedScript.push(entry)
   }
@@ -56,7 +53,7 @@ const addCache = (entry) => {
 
 const removeFailedScript = () => {
   if (failedScript.length > 0) {
-    failedScript.forEach((script) => {
+    failedScript.forEach(script => {
       const node = document.querySelector(`script[src='${script}']`)
       if (node != null) {
         node.parentNode.removeChild(node)
@@ -67,7 +64,7 @@ const removeFailedScript = () => {
   }
 }
 
-const scriptLoader = (...scripts) => (WrappedComponent) => {
+const scriptLoader = (...scripts) => WrappedComponent => {
   class ScriptLoader extends Component {
     static propTypes = {
       onScriptLoaded: PropTypes.func
@@ -77,51 +74,56 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
       onScriptLoaded: noop
     }
 
-    constructor (props, context) {
+    constructor(props, context) {
       super(props, context)
+      this._scripts = scripts
+      if (typeof scripts[0] === 'function') {
+        this._scripts = scripts[0](props)
+      }
 
       this.state = {
         isScriptLoaded: false,
         isScriptLoadSucceed: false
       }
 
-      this._isMounted = false;
+      this._isMounted = false
     }
 
-    componentDidMount () {
-      this._isMounted = true;
-      startLoadingScripts(scripts, err => {
-        if(this._isMounted) {
-          this.setState({
-            isScriptLoaded: true,
-            isScriptLoadSucceed: !err
-          }, () => {
-            if (!err) {
-              this.props.onScriptLoaded()
+    componentDidMount() {
+      this._isMounted = true
+      startLoadingScripts(this._scripts, err => {
+        if (this._isMounted) {
+          this.setState(
+            {
+              isScriptLoaded: true,
+              isScriptLoadSucceed: !err
+            },
+            () => {
+              if (!err) {
+                this.props.onScriptLoaded()
+              }
             }
-          })
+          )
         }
       })
     }
 
-    componentWillUnmount () {
-      this._isMounted = false;
+    componentWillUnmount() {
+      this._isMounted = false
     }
 
-    getWrappedInstance () {
-      return this.refs.wrappedInstance;
+    getWrappedInstance() {
+      return this.refs.wrappedInstance
     }
 
-    render () {
+    render() {
       const props = {
         ...this.props,
         ...this.state,
         ref: 'wrappedInstance'
       }
 
-      return (
-        <WrappedComponent {...props} />
-      )
+      return <WrappedComponent {...props} />
     }
   }
 
