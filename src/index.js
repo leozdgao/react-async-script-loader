@@ -2,49 +2,53 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import hoistStatics from 'hoist-non-react-statics'
 import { newScript, series, noop } from './utils'
+// const Promise = require('es6-promise').Promise;
 
 const loadedScript = []
 const pendingScripts = {}
 let failedScript = []
 
-export function startLoadingScripts(scripts, onComplete = noop) {
-  // sequence load
-  const loadNewScript = (script) => {
-    const src = typeof script === 'object' ? script.src : script
-    if (loadedScript.indexOf(src) < 0) {
-      return taskComplete => {
-        const callbacks = pendingScripts[src] || []
-        callbacks.push(taskComplete)
-        pendingScripts[src] = callbacks
-        if (callbacks.length === 1) {
-          return newScript(script)(err => {
-            pendingScripts[src].forEach(cb => cb(err, src))
-            delete pendingScripts[src]
-          })
-        }
+export function startLoadingScripts(scripts) {
+  return new Promise ((resolve,reject) => {
+      // sequence load
+      const loadNewScript = (script) => {
+          const src = typeof script === 'object' ? script.src : script
+          if (loadedScript.indexOf(src) < 0) {
+              return taskComplete => {
+                  const callbacks = pendingScripts[src] || []
+                  callbacks.push(taskComplete)
+                  pendingScripts[src] = callbacks
+                  if (callbacks.length === 1) {
+                      return newScript(script)(err => {
+                          pendingScripts[src].forEach(cb => cb(err, src))
+                          delete pendingScripts[src]
+                      })
+                  }
+              }
+          }
       }
-    }
-  }
-  const tasks = scripts.map(src => {
-    if (Array.isArray(src)) {
-      return src.map(loadNewScript)
-    }
-    else return loadNewScript(src)
-  })
+      const tasks = scripts.map(src => {
+          if (Array.isArray(src)) {
+              return src.map(loadNewScript)
+          }
+          else return loadNewScript(src)
+      })
 
-  series(...tasks)((err, src) => {
-    if (err) {
-      failedScript.push(src)
-    }
-    else {
-      if (Array.isArray(src)) {
-        src.forEach(addCache)
-      }
-      else addCache(src)
-    }
-  })(err => {
-    removeFailedScript()
-    onComplete(err)
+      series(...tasks)((err, src) => {
+          if (err) {
+              failedScript.push(src)
+          }
+          else {
+              if (Array.isArray(src)) {
+                  src.forEach(addCache)
+              }
+              else addCache(src)
+          }
+      })(err => {
+          removeFailedScript()
+          if (err) reject(err)
+          else resolve()
+      })
   })
 }
 
@@ -90,18 +94,19 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
 
     componentDidMount () {
       this._isMounted = true;
-      startLoadingScripts(scripts, err => {
-        if(this._isMounted) {
-          this.setState({
-            isScriptLoaded: true,
-            isScriptLoadSucceed: !err
-          }, () => {
-            if (!err) {
-              this.props.onScriptLoaded()
+      startLoadingScripts(scripts).then((result, error) => {
+            if(this._isMounted) {
+                this.setState({
+                    isScriptLoaded: true,
+                    isScriptLoadSucceed: !error
+                }, () => {
+                    if (!error) {
+                        this.props.onScriptLoaded()
+                    }
+                })
             }
-          })
-        }
-      })
+
+        })
     }
 
     componentWillUnmount () {

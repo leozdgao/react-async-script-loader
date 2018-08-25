@@ -1,6 +1,7 @@
 const ReactTestUtils = require('react-dom/test-utils')
 const React = require('react')
 const AsyncScriptLoader = require('../src').default
+require('es6-promise').polyfill();
 
 class TestComponent extends React.Component {
   render () {
