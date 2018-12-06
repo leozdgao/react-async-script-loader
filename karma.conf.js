@@ -1,6 +1,6 @@
 // Karma configuration
 
-const webpack = require('webpack')
+const webpack = require('webpack');
 
 module.exports = function (config) {
   config.set({
@@ -31,10 +31,19 @@ module.exports = function (config) {
     },
 
     webpack: {
+      mode: 'development',
       devtool: 'inline-source-map',
       module: {
-        loaders: [
-          { test: /\.js$/, exclude: /node_modules/, loader: 'babel' }
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: [
+              /node_modules/
+            ],
+            use: {
+              loader: "babel-loader"
+            }
+          }
         ]
       },
       plugins: [
@@ -72,7 +81,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [ 'PhantomJS' ],
+    browsers: [ 'ChromeHeadless' ],
 
 
     // Continuous Integration mode
@@ -83,4 +92,4 @@ module.exports = function (config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-}
+};

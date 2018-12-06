@@ -1,4 +1,14 @@
 {
-  "presets": [ "stage-0", "es2015", "react" ],
-  "plugins": [ "transform-class-properties" ]
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-syntax-class-properties",
+      {
+        "loose": false
+      }
+    ]
+  ]
 }
