@@ -2,12 +2,19 @@
 
 image: ubuntu
 
+# Version of node to use for the build
+
+environment:
+  nodejs_version: "10.14.1"
+
 # Commands for the build process
 
 install:
+  - ps: Install-Product node $env:nodejs_version
   - yarn install
 
 test_script:
+  - node --version
   - yarn test
 
 # Turn the build off, as otherwise it will try to build a .net project
