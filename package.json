@@ -1,8 +1,9 @@
 {
-  "name": "react-async-script-loader",
+  "name": "@andrewlowther/react-async-script-loader",
   "version": "0.3.0",
   "description": "A decorator for script lazy loading on react component",
   "main": "lib/index.js",
+  "private": false,
   "scripts": {
     "build": "babel src --out-dir lib",
     "prepublish": "npm run build",
