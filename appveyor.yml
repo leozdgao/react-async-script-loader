@@ -4,9 +4,9 @@ image: ubuntu
 # Commands for the build process
 install:
   # Install node via NVM
-  - ps: nvm --version
-  - ps: nvm install 10.14.1
-  - ps: nvm use 10.14.1
+  - nvm --version
+  - nvm install 10.14.1
+  - nvm use 10.14.1
   - yarn install
 
 test_script:
