@@ -1,6 +1,6 @@
 {
   "name": "react-async-script-loader",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "A decorator for script lazy loading on react component",
   "main": "lib/index.js",
   "scripts": {
@@ -10,19 +10,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leozdgao/react-script-loader.git"
+    "url": "git+https://github.com/andrewlowther/react-script-loader.git"
   },
   "keywords": [
     "react",
     "reactjs",
     "react-component"
   ],
-  "author": "leozdgao",
+  "author": "andrewlowther",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leozdgao/react-script-loader/issues"
+    "url": "https://github.com/andrewlowther/react-script-loader/issues"
   },
-  "homepage": "https://github.com/leozdgao/react-script-loader#readme",
+  "homepage": "https://github.com/andrewlowther/react-script-loader#readme",
   "peerDependencies": {
     "react": "^16.0.0"
   },
