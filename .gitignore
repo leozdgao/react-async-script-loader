@@ -2,6 +2,9 @@
 logs
 *.log
 
+# JetBrains
+.idea/
+
 # Runtime data
 pids
 *.pid
