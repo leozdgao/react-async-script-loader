@@ -1,0 +1,15 @@
+# Image for use in this project
+
+image: ubuntu
+
+# Commands for the build process
+
+install:
+  - yarn install
+
+test_script:
+  - yarn test
+
+# Turn the build off, as otherwise it will try to build a .net project
+
+build: off
