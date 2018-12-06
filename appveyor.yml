@@ -1,7 +1,3 @@
-# Image for use in this project
-
-image: ubuntu
-
 # Version of node to use for the build
 
 environment:
