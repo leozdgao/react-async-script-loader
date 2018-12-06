@@ -1,12 +1,13 @@
-# Version of node to use for the build
+# Image for use in this project
 
-environment:
-  nodejs_version: "10.14.1"
+image: ubuntu
 
 # Commands for the build process
 
 install:
-  - ps: Install-Product node $env:nodejs_version
+  # We have to handle this on our own in this case
+  - ps: curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+  - ps: sudo apt-get install -y nodejs
   - yarn install
 
 test_script:
