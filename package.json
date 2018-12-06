@@ -1,5 +1,5 @@
 {
-  "name": "@andrewlowther/react-async-script-loader",
+  "name": "react-lazy-script-loader",
   "version": "0.3.0",
   "description": "A decorator for script lazy loading on react component",
   "main": "lib/index.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewlowther/react-script-loader.git"
+    "url": "git+https://github.com/andrewlowther/react-async-script-loader.git"
   },
   "keywords": [
     "react",
@@ -21,9 +21,9 @@
   "author": "andrewlowther",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andrewlowther/react-script-loader/issues"
+    "url": "https://github.com/AndrewLowther/react-async-script-loader/issues"
   },
-  "homepage": "https://github.com/andrewlowther/react-script-loader#readme",
+  "homepage": "https://github.com/AndrewLowther/react-async-script-loader#readme",
   "peerDependencies": {
     "react": "^16.0.0"
   },
