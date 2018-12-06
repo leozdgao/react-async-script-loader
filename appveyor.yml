@@ -1,0 +1,16 @@
+# Image for use in this project
+image: ubuntu
+
+# Commands for the build process
+install:
+  # Install node via NVM
+  - ps: nvm --version
+  - ps: nvm install 10.14.1
+  - ps: nvm use 10.14.1
+  - yarn install
+
+test_script:
+  - yarn test
+
+# Turn the build off, as otherwise it will try to build a .net project
+build: off
