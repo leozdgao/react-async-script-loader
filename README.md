@@ -1,8 +1,10 @@
-# react-async-script-loader
+# react-lazy-script-loader
 
-[![Build Status](https://travis-ci.org/leozdgao/react-async-script-loader.svg?branch=master)](https://travis-ci.org/leozdgao/react-async-script-loader) [![npm version](https://badge.fury.io/js/react-async-script-loader.svg)](https://badge.fury.io/js/react-async-script-loader)
+[![Build Status](https://travis-ci.org/AndrewLowther/react-async-script-loader.svg?branch=master)](https://travis-ci.org/AndrewLowther/react-async-script-loader) [![npm version](https://badge.fury.io/js/react-lazy-script-loader.svg)](https://badge.fury.io/js/react-lazy-script-loader)
 
 A decorator for script lazy loading on react component.
+
+This is a direct fork from [leozdgao/react-async-script-loader](https://github.com/leozdgao/react-async-script-loader) until dependencies are updated.
 
 ## Description
 
@@ -11,7 +13,7 @@ Some component may depend on other vendors which you may not want to load them u
 ## Installation
 
 ```bash
-npm install --save react-async-script-loader
+npm install --save react-lazy-script-loader
 ```
 
 ## API
@@ -38,7 +40,7 @@ You can use it to decorate your component.
 
 ```javascript
 import React, { Component } from 'react'
-import scriptLoader from 'react-async-script-loader'
+import scriptLoader from 'react-lazy-script-loader'
 
 class Editor extends Component {
   ...
