@@ -1,6 +1,6 @@
 {
   "name": "react-lazy-script-loader",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A decorator for script lazy loading on react component",
   "main": "lib/index.js",
   "private": false,
