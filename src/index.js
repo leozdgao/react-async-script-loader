@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import hoistStatics from 'hoist-non-react-statics'
-import { newScript, series, noop } from './utils'
+import {newScript, series, noop} from './utils'
 
 const loadedScript = []
 const pendingScripts = {}
@@ -69,15 +69,15 @@ const removeFailedScript = () => {
 
 const scriptLoader = (...scripts) => (WrappedComponent) => {
   class ScriptLoader extends Component {
-    static propTypes = {
-      onScriptLoaded: PropTypes.func
-    }
-
     static defaultProps = {
       onScriptLoaded: noop
-    }
+    };
 
-    constructor (props, context) {
+    static propTypes = {
+      onScriptLoaded: PropTypes.func
+    };
+
+    constructor(props, context) {
       super(props, context)
 
       this.state = {
@@ -88,10 +88,10 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
       this._isMounted = false;
     }
 
-    componentDidMount () {
+    componentDidMount() {
       this._isMounted = true;
       startLoadingScripts(scripts, err => {
-        if(this._isMounted) {
+        if (this._isMounted) {
           this.setState({
             isScriptLoaded: true,
             isScriptLoadSucceed: !err
@@ -104,15 +104,15 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
       })
     }
 
-    componentWillUnmount () {
+    componentWillUnmount() {
       this._isMounted = false;
     }
 
-    getWrappedInstance () {
+    getWrappedInstance() {
       return this.refs.wrappedInstance;
     }
 
-    render () {
+    render() {
       const props = {
         ...this.props,
         ...this.state,
