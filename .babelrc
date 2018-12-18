@@ -9,6 +9,7 @@
       {
         "loose": false
       }
-    ]
+    ],
+    "@babel/plugin-proposal-class-properties"
   ]
 }
