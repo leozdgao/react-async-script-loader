@@ -69,6 +69,14 @@ const removeFailedScript = () => {
 
 const scriptLoader = (...scripts) => (WrappedComponent) => {
   class ScriptLoader extends Component {
+    static defaultProps = {
+      onScriptLoaded: noop
+    };
+
+    static propTypes = {
+      onScriptLoaded: PropTypes.func
+    };
+
     constructor(props, context) {
       super(props, context)
 
@@ -119,13 +127,5 @@ const scriptLoader = (...scripts) => (WrappedComponent) => {
 
   return hoistStatics(ScriptLoader, WrappedComponent)
 }
-
-scriptLoader.defaultProps = {
-  onScriptLoaded: noop
-};
-
-scriptLoader.propTypes = {
-  onScriptLoaded: PropTypes.func
-};
 
 export default scriptLoader
